@@ -1,12 +1,12 @@
 '''
 {Boderline Algorithm for Two Categories}
 
-Date: 2020-05-12 Tue, KST
+Date: 2020-05-15 Fri, KST
 Developed by Stephen Oh, Chief Developer of Trendous Development Alliance & Studio.Chem
 Email Address: stevenoh0908@gmail.com
 
 > Warning
-This Code uses numpy and matplotlib for excution, please make sure that you've installed them to your python's default directory via pip.
+This Code uses numpy and matplotlib for execution, please make sure that you've installed them to your python's default directory via pip.
 '''
 import numpy as np
 from matplotlib import pyplot as plt
@@ -656,7 +656,6 @@ class FileManager:
         self.openFile(self.MODE_READ)
         cat1 = []
         cat2 = []
-
         while True:
             line = self.file.readline()
             if DEBUG: print(line)
@@ -665,9 +664,15 @@ class FileManager:
             if not data[0] == '' and not data[0] == '\n':
                 cat1.append(data[0])
                 pass
+            else:
+                print("Loading Error, Make sure your file doesn't have any blank on the middle of the file.")
+                return None, None
             if not data[1] == '' and not data[1] == '\n':
                 cat2.append(data[1])
                 pass
+            else:
+                print("Loading Error, Make sure your file doesn't have any blank on the middle of the file.")
+                return None, None
             pass
         if DEBUG: print(cat1, cat2)
         cat1 = self.parseData(cat1)
@@ -688,6 +693,7 @@ class FileManager:
                 pass
             self.closeFile()
             pass
+        return True
         pass
     
     def __init__(self, filename):
