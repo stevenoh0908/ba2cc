@@ -11,10 +11,10 @@ This module requires numpy and matplotlib for operation, please make sure that y
 installed them to your python's default directory.
 
 You can install them by pip, with following commands in your cmd:
-'''
+```
 pip install numpy
 pip install matplotlib
-'''
+```
 
 ## Installization
 You can use this module simply by downloading, and locating code file(ba2cc.py) to your project directory, and importing this module(ba2cc) in your code.
@@ -22,14 +22,14 @@ You can use this module simply by downloading, and locating code file(ba2cc.py) 
 ## Documentation
 
 ### Structure of Module
-'''
+```
 MODULE ba2cc
 |_ CLASS BAManager
 |_ CLASS ExtremeManager
 |_ CLASS DataManager
 |_ CLASS FileManager
 |_ VARIABLE DEBUG
-'''
+```
 ba2cc Module is consisted of totally four classes and one variable for debugging.
 Class BAManager is the main class for this module, which for calculating and displaying border value between two categories of continuously-distributed data.
 Class ExtremeManager is for excluding extreme values within sets by offset, which directly used at deleting too-far data from other ones.
@@ -38,7 +38,7 @@ Class FileManager is for opening, loading, closing CSV(Comma-Seperated-Values) F
 
 ### Class - BAManager
 #### Structure
-'''
+```
 CLASS BAManager
 |_ CONST OPTION_UNLAYERED
 |_ CONST OPTION_LAYERED
@@ -67,7 +67,8 @@ CLASS BAManager
 |_ FUNCTION calculateUnsignedCostMean(border, data_in_list)
 |_ FUNCTION calculateEntropy(category1_data_in_list_inArea, category2_data_in_list_inArea)
 |_ FUNCTION calculateDividedEntropy(category1_data_in_list, category2_data_in_list, border)
-'''
+```
+
 #### Const Variables
 ##### CONST OPTION_UNLAYERED
 ##### CONST OPTION_LAYERED
@@ -111,7 +112,7 @@ CLASS BAManager
 
 ### Class - ExtremeManager
 #### Structure
-'''
+```
 CLASS ExtremeManager
 |_ ExtremeManager(data_in_list)
 |_ FUNCTION setData(data_in_list)
@@ -121,7 +122,7 @@ CLASS ExtremeManager
 |_ FUNCTION clearExtremes()
 |_ FUNCTION calculateLeftNearbyDistance(index_of_data_in_list)
 |_ FUNCTION calculateRightNearbyDistance(index_of_data_in_list)
-'''
+```
 
 #### Constructor
 ###### CONSTRICTOR ExtremeManager(data_in_list)
@@ -143,14 +144,15 @@ CLASS ExtremeManager
 
 ### Class - DataManager
 #### Structure
-'''
+```
 CLASS DataManager
 |_ DataManager(data_in_list)
 |_ FUNCTION setData(data_in_list)
 |_ FUNCTION getData()
 |_ FUNCTION sort()
 |_ FUNCTION reverse_sort()
-'''
+```
+
 #### Constructor
 ###### CONSTRUCTOR DataManager(data_in_list)
 
@@ -166,7 +168,7 @@ CLASS DataManager
 
 ### Class - FileManager
 #### Structure
-'''
+```
 CLASS FileManager
 |_ FileManager(filename)
 |_ FUNCTION setFileName(filename)
@@ -176,7 +178,7 @@ CLASS FileManager
 |_ FUNCTION reloadFile()
 |_ FUNCTION loadData()
 |_ FUNCTION parseData()
-'''
+```
 
 #### Constructor
 ###### CONSTRUCTOR FileManager(filename)
