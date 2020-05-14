@@ -187,7 +187,7 @@ border = manager.calculateSignedBorder()
 # border is now 4.000000000000003 which calculated by Signed-Border Algorithm. Also, manager's in-class variable is now 4.000000000000003 too.
 ```
 look how it worked!
-![Signed Border Algorithm Result](./image/Signed Border.png)
+![Signed Border Algorithm Result](./image/Signed%20Border.png)
 
 ###### FUNCTION calculateUnsignedBorder()
 saves in in-class-varible and returns calculated Border value in float, by Unsigned-Border Algorithm. Unsigned-Border Algorithm is one of the algorithm which tries to find border value by minimizing Unsigned-Cost of Datas. Unsigned-Cost is defined with following mathematical expression:
@@ -200,7 +200,7 @@ border = manager.calculateUnsignedBorder()
 # border is now 4.000000000000003 which calculated by Unsigned-Border Algorithm. Also, manager's in-class variable is now 4.000000000000003 too.
 ```
 look how it worked!
-![Unsigned Border Algorithm Result](./image/Unsigned Border.png)
+![Unsigned Border Algorithm Result](./image/Unsigned%20Border.png)
 
 ###### FUNCTION calculateEntropyBorder()
 saves in in-class-varible and returns calculated Border value in float, by Entropy-Border Algorithm. Entropy-Border Algorithm is one of the algorithm which tries to find border value by minimizing total entropy of data area. entropy is little-bit complex concept to understanding, so for more information of entropy(in IT), please google it. Entropy-Border Algorithm is suitable with any data without operlapping part. It is most effective one with all data on average situation. You don't need a variable to store return value especially when you're planning to just display Border in Chart and no uses for exporting border values, because when you run this method it will save border value to in-class-variable automatically.
@@ -212,7 +212,7 @@ border = manager.calculateEntropyBorder()
 # border is now 3.450000000000002 which calculated by Entropy-Border Algorithm. Also, manager's in-class variable is now 3.450000000000002 too.
 ```
 look how it worked!
-![Entropy Border Algorithm Result](./image/Entropy Border.png)
+![Entropy Border Algorithm Result](./image/Entropy%20Border.png)
 
 ###### FUNCTION calculateSignedMeanBorder()
 ###### FUNCTION calculateUnsignedMeanBorder()
