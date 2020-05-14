@@ -84,7 +84,17 @@ Const Variable OPTION_LAYERED is used for setting displaying mode when you uses 
 ![OPTION_LAYERED Data Distribution Chart Example 2](https://imgbbb.com/images/2020/05/14/option_layered_border.png)
 
 #### Constructor
+
 ###### CONSTRUCTOR BAManager(category1_data_in_list, category2_data_in_list)
+Constructor of Class BAManager requires two perameters ```category1_data_in_list``` and ```category_data_in_list```.
+Those parameters must be a list type otherwise it would occur fatal error.
+
+**Example**
+```python
+cat1 = [1,2,3,4]
+cat2 = [4,5,6,7,8]
+manager = ba2cnc.BAManager(cat1, cat2)
+```
 
 #### Methods
 
