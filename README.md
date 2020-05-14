@@ -20,7 +20,7 @@ pip install matplotlib
 ```
 
 ## Installization
-You can use this module simply by downloading, and locating code file(ba2cc.py) to your project directory, and importing this module(ba2cc) in your code.
+You can use this module simply by [downloading](https://github.com/stevenoh0908/ba2cc/releases), and locating code file(ba2cc.py) to your project directory, and importing this module(ba2cc) in your code.
 
 ## Documentation
 
