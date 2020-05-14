@@ -100,7 +100,7 @@ manager = ba2cc.BAManager(cat1, cat2)
 ##### For Setting In-Variables
 
 ###### FUNCTION getData()
-returns setted data of two categories with list, recommended to use **Unpacking** like following example code.
+Returns setted data of two categories with list, recommended to use **Unpacking** like following example code.
 
 **Example**
 ```python
@@ -110,7 +110,7 @@ cat1, cat2 = manager.getData()
 ```
 
 ###### FUNCTION setStep(step)
-sets finding step for calculating border for all algorithms. parameter ```step``` must be a positive number, no matter it is an int or float. If you don't set step, Module will use default step, which is 0.1.
+Sets finding step for calculating border for all algorithms. Parameter ```step``` must be a positive number, no matter it is an int or float. If you don't set step, the module will use default step, which is 0.1.
 
 **Example**
 ```python
@@ -120,7 +120,7 @@ manager.setStep(0.001)
 ```
 
 ###### FUNCTION getStep()
-returns step for calculating border for all algorithms in float.
+Returns step for calculating border for all algorithms in float.
 
 **Example**
 ```python
@@ -130,8 +130,8 @@ step = manager.getStep()
 ```
 
 ###### FUNCTION setCategoryData(category_number, data_in_list)
-sets selected category data. requires two parameters: ```category_number```, ```data_in_list```.
-parameter ```category_number``` must be 1 or 2, which means which category you'll gonna change data with following parameter, ```data_in_list```. parameter ```data_in_list``` must be a list object.
+Sets selected category data. requires two parameters: ```category_number```, ```data_in_list```.
+Parameter ```category_number``` must be 1 or 2, which means which category you'll gonna change data with following parameter, ```data_in_list```. Parameter ```data_in_list``` must be a list object.
 
 **Example**
 ```python
@@ -143,7 +143,7 @@ cat1, cat2 = manager.getData()
 ```
 
 ###### FUNCTION getCategoryData(category_number)
-returns selected category's data. requires one parameter: ```category_number``` which must be 1 or 2.
+Returns selected category's data. Requires one parameter: ```category_number``` which must be 1 or 2.
 
 **Example**
 ```python
@@ -154,7 +154,7 @@ cat2 = manager.getCategoryData(2)
 ```
 
 ###### FUNCTION setCategoryName(category_number, name)
-sets selected category's name. Category name will be displayed in legends when you display data in charts. requires two parameters: ```category_number```, ```name```. ```category_number``` must be 1 or 2, and ```name``` must be a string object. You need this methods when only you'd like to set your category's name manually. If you don't, the module will use default category name which is 'Category 1', 'Category 2'.
+Sets selected category's name. Category name will be displayed in legends when you display data in charts. Requires two parameters: ```category_number```, ```name```. ```category_number``` must be 1 or 2, and ```name``` must be a string object. You need this methods when only you'd like to set your category's name manually. If you don't, the module will use default category name which is 'Category 1', 'Category 2'.
 
 **Example**
 ```python
@@ -164,7 +164,7 @@ manager.setCategoryName(2, 'Data')
 ```
 
 ###### FUNCTION getCategoryName(category_number)
-returns selected category's name in string object. requires one parameter: ```category_number``` which must be 1 or 2.
+Returns selected category's name in string object. Requires one parameter: ```category_number``` which must be 1 or 2.
 
 **Example**
 ```python
@@ -177,61 +177,147 @@ name2 = manager.getCategoryName(2)
 
 ##### For Calculating Borders
 ###### FUNCTION calculateSignedBorder()
-saves in in-class-varible and returns calculated Border value in float, by Signed-Border Algorithm. Signed-Border Algorithm is one of the algorithm which tries to find border value by minimizing Signed-Cost of Datas. Signed-Cost is defined with following mathematical expression:
+Saves in in-class-varible and returns calculated Border value in float, by Signed-Border Algorithm. Signed-Border Algorithm is one of the algorithm which tries to find border value by minimizing Signed-Cost of Datas. Signed-Cost is defined with following mathematical expression:
 ![math](https://latex.codecogs.com/png.latex?\inline&space;J&space;=&space;\sum_{k=1}^{n}(x_{k}&space;-&space;b)), where ![math](https://latex.codecogs.com/png.latex?\inline&space;n) is number of data regardless of categories, ![math](https://latex.codecogs.com/png.latex?\inline&space;x_{k}) is value of ![math](https://latex.codecogs.com/png.latex?\inline&space;k)th data, ![math](https://latex.codecogs.com/png.latex?\inline&space;b) is border value. Singed-Border Algorithm is suitable with data with operlapping parts, with considering number of each categories. You don't need a variable to store return value especially when you're planning to just display Border in Chart and no uses for exporting border values, because when you run this method it will save border value to in-class-variable automatically.
 
 **Example**
 ```python
-manager = ba2cc.BAManager[1,2,3], [4,5,6,7]
+manager = ba2cc.BAManager([1,2,3], [4,5,6,7])
 border = manager.calculateSignedBorder()
 # border is now 4.000000000000003 which calculated by Signed-Border Algorithm. Also, manager's in-class variable is now 4.000000000000003 too.
 ```
-look how it worked!
+
+Look how it worked!
+
 ![Signed Border Algorithm Result](./image/Signed%20Border.png)
 
 ###### FUNCTION calculateUnsignedBorder()
-saves in in-class-varible and returns calculated Border value in float, by Unsigned-Border Algorithm. Unsigned-Border Algorithm is one of the algorithm which tries to find border value by minimizing Unsigned-Cost of Datas. Unsigned-Cost is defined with following mathematical expression:
+Saves in in-class-varible and returns calculated Border value in float, by Unsigned-Border Algorithm. Unsigned-Border Algorithm is one of the algorithm which tries to find border value by minimizing Unsigned-Cost of Datas. Unsigned-Cost is defined with following mathematical expression:
 ![math](https://latex.codecogs.com/png.latex?\inline&space;J&space;=&space;\sum_{k=1}^n&space;(x_{k}&space;-&space;b)^2), where ![math](https://latex.codecogs.com/png.latex?\inline&space;n) is number of data regardless of categories, ![math](https://latex.codecogs.com/png.latex?\inline&space;x_{k}) is value of ![math4](https://latex.codecogs.com/png.latex?\inline&space;k)th data, ![math](https://latex.codecogs.com/png.latex?\inline&space;b) is border value. Unsinged-Border Algorithm is suitable with data with operlapping parts, with considering number of each categories. You don't need a variable to store return value especially when you're planning to just display Border in Chart and no uses for exporting border values, because when you run this method it will save border value to in-class-variable automatically.
 
 **Example**
 ```python
-manager = ba2cc.BAManager[1,2,3], [4,5,6,7]
+manager = ba2cc.BAManager([1,2,3], [4,5,6,7])
 border = manager.calculateUnsignedBorder()
 # border is now 4.000000000000003 which calculated by Unsigned-Border Algorithm. Also, manager's in-class variable is now 4.000000000000003 too.
 ```
-look how it worked!
+
+Look how it worked!
+
 ![Unsigned Border Algorithm Result](./image/Unsigned%20Border.png)
 
 ###### FUNCTION calculateEntropyBorder()
-saves in in-class-varible and returns calculated Border value in float, by Entropy-Border Algorithm. Entropy-Border Algorithm is one of the algorithm which tries to find border value by minimizing total entropy of data area. entropy is little-bit complex concept to understanding, so for more information of entropy(in IT), please google it. Entropy-Border Algorithm is suitable with any data without operlapping part. It is most effective one with all data on average situation. You don't need a variable to store return value especially when you're planning to just display Border in Chart and no uses for exporting border values, because when you run this method it will save border value to in-class-variable automatically.
+Saves in in-class-varible and returns calculated Border value in float, by Entropy-Border Algorithm. Entropy-Border Algorithm is one of the algorithm which tries to find border value by minimizing total entropy of data area. entropy is little-bit complex concept to understanding, so for more information of entropy(in IT), please google it. Entropy-Border Algorithm is suitable with any data without operlapping part. It is most effective one with all data on average situation. You don't need a variable to store return value especially when you're planning to just display Border in Chart and no uses for exporting border values, because when you run this method it will save border value to in-class-variable automatically.
 
 **Example**
 ```python
-manager = ba2cc.BAManager[1,2,3], [4,5,6,7]
+manager = ba2cc.BAManager([1,2,3], [4,5,6,7])
 border = manager.calculateEntropyBorder()
 # border is now 3.450000000000002 which calculated by Entropy-Border Algorithm. Also, manager's in-class variable is now 3.450000000000002 too.
 ```
-look how it worked!
+
+Look how it worked!
+
 ![Entropy Border Algorithm Result](./image/Entropy%20Border.png)
 
 ###### FUNCTION calculateSignedMeanBorder()
+Saves in in-class-varible and returns calculated Border value in float, by Signed-Mean-Border Algorithm. Signed-Mean-Border Algorithm is one of the algorithm which tries to find border value by minimizing Average of Signed-Cost of Datas. Singed-Mean-Border Algorithm is suitable with data with operlapping parts, without considering number of each categories. You don't need a variable to store return value especially when you're planning to just display Border in Chart and no uses for exporting border values, because when you run this method it will save border value to in-class-variable automatically.
+
+**Example**
+```python
+manager = ba2cc.BAManager([1,2,3], [4,5,6,7])
+border = manager.calculateSignedMeanBorder()
+# border is now 3.7000000000000024 which calculated by Signed-Mean-Border Algorithm. Also, manager's in-class variable is now 3.7000000000000024 too.
+```
+
+Look how it worked!
+
+![Signed Border Algorithm Result](./image/Signed%20Mean%20Border.png)
+
+
 ###### FUNCTION calculateUnsignedMeanBorder()
+Saves in in-class-varible and returns calculated Border value in float, by Unsigned-Mean-Border Algorithm. Unsigned-Mean-Border Algorithm is one of the algorithm which tries to find border value by minimizing Average of Unsigned-Cost of Datas. Unsinged-Mean-Border Algorithm is suitable with data with operlapping parts, without considering number of each categories. You don't need a variable to store return value especially when you're planning to just display Border in Chart and no uses for exporting border values, because when you run this method it will save border value to in-class-variable automatically.
+
+**Example**
+```python
+manager = ba2cc.BAManager([1,2,3], [4,5,6,7])
+border = manager.calculateUnsignedMeanBorder()
+# border is now 3.7500000000000027 which calculated by Unsigned-Mean-Border Algorithm. Also, manager's in-class variable is now 3.7500000000000027 too.
+```
+
+Look how it worked!
+
+![Unsigned Border Algorithm Result](./image/Unsigned%20Mean%20Border.png)
 
 ##### For Displaying Data and Borders In Chart
+
 ###### FUNCTION displayDataInChart(display_mode)
+Displays Data Distribution Chart on Window using matplotlib graph. Requires one parameter: ```display_mode``` which can be only ```OPTION_UNLAYERED``` or ```OPTION_LAYERED``` in BAManager Class Const Variables. Displays only data distribution status with red, blue dots, do not displays border in chart. For more information of ```OPTION_UNLAYERED``` or ```OPTION_LAYERED```, please refer to their statement in this document which are up there.
+
+**Example**
+```python
+manager = ba2cc.BAManager([1,2,3], [4,5,6,7])
+manager.displayDataInChart(ba2cc.BAManager.OPTION_LAYERED)
+manager.displayDataInChart(ba2cc.BAManager.OPTION_UNLAYERED)
+```
+
+First will display this:
+
+![displayDataInChart Example 1](./image/displayDataInChart_optionLayered.png)
+
+And the second will display this:
+
+![displayDataInChart Example 2](./image/displayDataInChart_optionUnlayered.png)
+
 ###### FUNCTION displayBorderInChart(display_mode)
+Displays Data Distribution Chart on Window using matplotlib graph with borderline. Requires one parameter: ```display_mode``` which can be only ```OPTION_UNLAYERED``` or ```OPTION_LAYERED``` in BAManager Class Const Variables. Displays only data distribution status with red, blue dots, displays border in chart with yellow half-dashed line. For more information of ```OPTION_UNLAYERED``` or ```OPTION_LAYERED```, please refer to their statement in this document which are up there.
+
+**Example**
+```python
+manager = ba2cc.BAManager([1,2,3], [4,5,6,7])
+manager.displayBorderInChart(ba2cc.BAManager.OPTION_LAYERED)
+manager.displayBorderInChart(ba2cc.BAManager.OPTION_UNLAYERED)
+```
+
+First will display this:
+
+![displayBorderInChart Example 1](./image/displayBorderInChart_optionLayered.png)
+
+And the second will display this:
+
+![displayBorderInChart Example 2](./image/displayBorderInChart_optionUnlayered.png)
+
 
 ##### In-Methods
 ###### FUNCTION setCategoryDataMin(category_number)
+Used for setting selected category's mininum value of data for calculating border. Not recommended for direct uses, because that would occur error to calculating border. Requires one parameter: ```category_number``` which must be 1 or 2.
+
 ###### FUNCTION getCategoryDataMin(category_number)
+Used for getting selected category's minimum value of data. Requires one parameter: ```category_number``` which must be 1 or 2.
+
 ###### FUNCTION setCategoryDataMax(category_number)
+Used for setting selected category's maximum value of data for calculating border. Not recommended for direct uses, because that would occur error to calculating border. Requires one parameter: ```category_number``` which must be 1 or 2.
+
 ###### FUNCTION getCategoryDataMax(category_number)
+Used for getting selected category's maximum value of data. Requires one parameter: ```category_number``` which must be 1 or 2.
+
 ###### FUNCTION calculateSignedCost(border, data_in_list)
+Used for calculating Signed-Cost in ```calculateSingedBorder()```. Not recommended for direct uses, because that would occur fatal error to calculating border. Requires two parameters: ```border```, ```data_in_list```. Parameter ```border``` is the value of border which you want to calculate with, parameter ```data_in_list``` is data in list object that you'll use to calculate Signed-Cost of them.
+
 ###### FUNCTION calculateUnsignedCost(border, data_in_list)
+Used for calculating Unsigned-Cost in ```calculateUnsingedBorder()```. Not recommended for direct uses, because that would occur fatal error to calculating border. Requires two parameters: ```border```, ```data_in_list```. Parameter ```border``` is the value of border which you want to calculate with, parameter ```data_in_list``` is data in list object that you'll use to calculate Unsigned-Cost of them.
+
 ###### FUNCTION calculateSignedCostMean(border, data_in_list)
+Used for calculating Average of Signed-Cost in ```calculateSingedMeanBorder()```. Not recommended for direct uses, because that would occur fatal error to calculating border. Requires two parameters: ```border```, ```data_in_list```. Parameter ```border``` is the value of border which you want to calculate with, parameter ```data_in_list``` is data in list object that you'll use to calculate Average of Signed-Cost of them.
+
 ###### FUNCTION calculateUnsignedCostMean(border, data_in_list)
+Used for calculating Average of Unsigned-Cost in ```calculateUnsingedMeanBorder()```. Not recommended for direct uses, because that would occur fatal error to calculating border. Requires two parameters: ```border```, ```data_in_list```. Parameter ```border``` is the value of border which you want to calculate with, parameter ```data_in_list``` is data in list object that you'll use to calculate Average of Unsigned-Cost of them.
+
 ###### FUNCTION calculateEntropy(category1_data_in_list_inArea, category2_data_in_list_inArea)
+Used for calculating Entropy of data area in ```calculateEntropyBorder()```. Not recommended for direct uses, because that would occur fatal error to calculating border. Requires two parameters: ```category1_data_in_list_inArea```, ```category2_data_in_list_inArea```. Parameter ```category1_data_in_list_inArea``` is data in list object of first sub-area for calculating total-area's entropy, parameter ```category2_data_in_list_inArea``` is also data in list object, of second sub-area for calculating total-area's entropy.
+
 ###### FUNCTION calculateDividedEntropy(category1_data_in_list, category2_data_in_list, border)
+Used for calculating Entropy of data area in ```calculateEntropyBorder()```. Not recommended for direct uses, because that would occur fatal error to calculating border. Requires three parameters: ```category1_data_in_list```, ```category2_data_in_list```, ```border```. Parameter ```category1_data_in_list``` is data in list object of category 1, parameter ```category2_data_in_list``` is also data in list object, of category 2. Parameter ```border``` is border value that you'll calculate a divided-entropy with it.
 
 ### Class - ExtremeManager
 #### Structure
