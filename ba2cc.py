@@ -389,11 +389,12 @@ class BAManager:
                     y2.append(1)
                     pass
 
+            plt.figure(num='Data Distribution Chart')
             plt.plot(plot_cat1, y1, 'r.', label=self.catname1)
             plt.plot(plot_cat2, y2, 'b.', label=self.catname2)
             plt.xlabel('Values')
             plt.ylabel('')
-            
+
             plt.title('Data Distribution Chart')
             plt.gca().axes.get_yaxis().set_visible(False)
             plt.show()
@@ -422,15 +423,16 @@ class BAManager:
                     y2.append(1)
                     pass
                 pass
-            
+
+            plt.figure(num='Data Distribution Chart with Border')
             plt.plot(plot_cat1, y1, 'r.', label=self.catname1)
             plt.plot(plot_cat2, y2, 'b.', label=self.catname2)
             plt.plot([self.border, self.border], [0,3], 'y--')
             plt.xlabel('Values')
             plt.legend(loc='best')
             plt.ylabel('')
-            
-            plt.title('Data Distribution Chart')
+
+            plt.title('Data Distribution Chart with Border')
             plt.gca().axes.get_yaxis().set_visible(False)
             plt.show()
             pass
