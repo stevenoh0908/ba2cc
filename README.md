@@ -177,6 +177,15 @@ name2 = manager.getCategoryName(2)
 
 ##### For Calculating Borders
 ###### FUNCTION calculateSignedBorder()
+saves in in-class-varible and returns calculated Border value in float, by Signed-Border Algorithm. Signed-Border Algorithm is one of the algorithm which tries to find border value by minimizing Signed-Cost of Datas. Signed-Cost is defined with following mathematical expression:
+$J = \sum_{k=1}^{n}(x_{k} - b)$, where $n$ is number of data regardless of categories, $x_{k}$ is value of $k$th data, $b$ is border value. You don't need a variable to store return value especially when you're planning to just display Border in Chart and no uses for exporting border values, because when you run this method it will save border value to in-class-variable automatically.
+
+**Example**
+```python
+manager = ba2cc.BAManager[1,2,3], [4,5,6,7]
+border = manager.calculateSignedBorder()
+# border is now 4.000000000000003 which calculated by Signed-Border Algorithm. Also, manager's in-class variable is now 4.000000000000003 too.
+```
 ###### FUNCTION calculateUnsignedBorder()
 ###### FUNCTION calculateEntropyBorder()
 ###### FUNCTION calculateSignedMeanBorder()
