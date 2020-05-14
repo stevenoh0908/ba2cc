@@ -477,10 +477,11 @@ CLASS FileManager
 |_ FileManager(filename)
 |_ FUNCTION setFileName(filename)
 |_ FUNCTION getFileName()
-|_ FUNCTION openFile()
+|_ FUNCTION loadData()
+|_ FUNCTION writeData(category1_data_in_list, category2_data_in_list)
+|_ FUNCTION openFile(mode)
 |_ FUNCTION closeFile()
 |_ FUNCTION reloadFile()
-|_ FUNCTION loadData()
 |_ FUNCTION parseData(data_list)
 ```
 
@@ -518,45 +519,13 @@ filename = fileManager.getFileName()
 
 ##### For Handling Files
 
-###### FUNCTION openFile()
-Opens file which is in current-working-directory with a saved filename in reading mode.
-
-**Example**
-```python
-fileManager = ba2cc.FileManager('data.csv')
-fileManager.openFile()
-```
-
-###### FUNCTION closeFile()
-Closes opened file. Do not use it when you didn't open any file. It might occur an error. When you are done with your file, please close your file with this method to avoid problems.
-
-**Example**
-```python
-fileManager = ba2cc.FileManager('data.csv')
-fileManager.openFile()
-fileManager.closeFile()
-```
-
-###### FUNCTION reloadFile()
-Reloads(Close and Open again) opened file. Do not use it when you didn't open any file. It might occur an error. When you give some change with your file, please call this method first to avoid problems.
-
-**Example**
-```python
-fileManager = ba2cc.FileManager('data.csv')
-fileManager.openFile()
-fileManager.reloadFile()
-fileManager.closeFile()
-```
-
 ###### FUNCTION loadData()
-Loads all of the data in your CSV file, and returns them as two list objects, which are data of category 1, category 2 each. Please use **Unpacking** to save them like the following example code. Only use it when you opened the file.
+Loads all of the data in your CSV file, and returns them as two list objects, which are data of category 1, category 2 each. Please use **Unpacking** to save them like the following example code. Only use it when you opened the file. This method will open and close file automatically, so don't open or close your file manually when you use this method.
 
 **Example**
 ```python
 fileManager = ba2cc.FileManager('data.csv')
-fileManager.openFile()
 cat1, cat2 = fileManager.loadData()
-fileManager.closeFile()
 ```
 **Important**
 
@@ -570,6 +539,65 @@ If ```data.csv``` looks like this:
 ```
 then cat1, cat2 will be ```python [1,2,3]```, ```python [2,3]``` each. Do not forget ```loadFile()``` method reads CSV file vertically.
 
+###### FUNCTION writeData(category1_data_in_list, category2_data_in_list)
+
+Writes given data as CSV file. Requires two parameters: ```category1_data_in_list``` and ```category2_data_in_list```. Parameter ```category1_data_in_list``` is a list of data that you'll put in the first category, and parameter ```category2_data_in_list``` is a list of data that you'll put in the second category. Those parameters must be a list object. Otherwise, there would be a fatal error. This method also automatically opens and closes the file, so don't open or close your file manually when you use this method.
+
+**Example**
+
+```python
+fileManager = ba2cc.FileManager('test.csv')
+fileManager.writeData([1,2,3],[4,5])
+```
+
+The following result will be just like this (test.csv):
+
+```
+1,4
+2,5
+3,
+```
+
 ##### In-Methods
 ###### FUNCTION parseData(data_list)
 Used for parse given string list data to float list data in ```loadData()```. Not recommended for direct uses. Requires one parameter: ```data_list``` which is a list of string data that you want to convert them to list of float data.
+
+###### FUNCTION openFile(mode)
+
+Opens file which is in current-working-directory with a saved filename in given mode. Not recommended for direct uses. Requires one parameter: ```mode``` which must be given as ```MODE_READ``` or ```MODE_WRITE```.
+
+**Example**
+
+```python
+fileManager = ba2cc.FileManager('data.csv')
+fileManager.openFile(ba2cc.FileManager.MODE_READ)
+# Open data.csv with read mode.
+```
+
+###### FUNCTION closeFile()
+
+Closes opened file. Do not use it when you didn't open any file. It might occur an error. When you are done with your file, please close your file with this method to avoid problems. Not recommended for direct uses.
+
+**Example**
+
+```python
+fileManager = ba2cc.FileManager('data.csv')
+fileManager.openFile(ba2cc.FileManager.MODE_WRITE)
+fileManager.closeFile()
+# Open data.csv with write mode, and close it.
+```
+
+###### FUNCTION reloadFile()
+
+Reloads(Close and Open again) opened file. Do not use it when you didn't open any file. It might occur an error. When you give some change with your file, please call this method first to avoid problems. Not recommended for direct uses.
+
+**Example**
+
+```python
+fileManager = ba2cc.FileManager('data.csv')
+fileManager.openFile()
+fileManager.reloadFile()
+fileManager.closeFile()
+```
+
+###### 

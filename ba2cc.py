@@ -531,9 +531,9 @@ class ExtremeManager:
             return None
         pass
 
-    def setData(self, data):
-        if not len(data)==0:
-            self.data = data
+    def setData(self, data_in_list):
+        if not len(data_in_list)==0:
+            self.data = data_in_list
             pass
         else:
             print("Ouch-Oh, Data must be filled!")
@@ -568,9 +568,9 @@ class DataManager:
     def getData(self):
         return self.data
 
-    def setData(self, data):
-        if not len(data) == 0:
-            self.data = data
+    def setData(self, data_in_list):
+        if not len(data_in_list) == 0:
+            self.data = data_in_list
             pass
         else:
             print("Ouch-Oh, Data must be filled!")
@@ -604,6 +604,9 @@ class FileManager:
     filename = "data.csv"
     file = None
 
+    MODE_READ = 'r'
+    MODE_WRITE = 'w'
+
     def setFileName(self, filename):
         if not len(filename) == 0 and filename[-4:] == '.csv':
             self.filename = filename
@@ -616,8 +619,8 @@ class FileManager:
     def getFileName(self):
         return self.filename
 
-    def openFile(self):
-        self.file = open(self.filename, 'r')
+    def openFile(self, mode):
+        self.file = open(self.filename, mode)
         pass
 
     def closeFile(self):
@@ -632,47 +635,58 @@ class FileManager:
     def reloadFile(self):
         if self.file:
             self.closeFile()
-            self.openFile()
+            self.openFile(self.MODE_READ)
             pass
         else:
             print("Cannot close file - Did you really open file before?")
             pass
         pass
 
-    def parseData(self, datalist):
+    def parseData(self, data_in_list):
         returnlist =[]
-        for item in datalist:
+        for item in data_in_list:
             returnlist.append(float(item))
             pass
         return returnlist            
 
     def loadData(self):
-        if self.file:
-            self.reloadFile()
-            cat1 = []
-            cat2 = []
+        self.openFile(self.MODE_READ)
+        cat1 = []
+        cat2 = []
 
-            while True:
-                line = self.file.readline()
-                if DEBUG: print(line)
-                if not line: break
-                data = line.split(',')
-                if not data[0] == '' and not data[0] == '\n':
-                    cat1.append(data[0])
-                    pass
-                if not data[1] == '' and not data[1] == '\n':
-                    cat2.append(data[1])
-                    pass
+        while True:
+            line = self.file.readline()
+            if DEBUG: print(line)
+            if not line: break
+            data = line.split(',')
+            if not data[0] == '' and not data[0] == '\n':
+                cat1.append(data[0])
                 pass
-            if DEBUG: print(cat1, cat2)
-            cat1 = self.parseData(cat1)
-            cat2 = self.parseData(cat2)
-            return cat1, cat2
+            if not data[1] == '' and not data[1] == '\n':
+                cat2.append(data[1])
+                pass
+            pass
+        if DEBUG: print(cat1, cat2)
+        cat1 = self.parseData(cat1)
+        cat2 = self.parseData(cat2)
+        self.closeFile()
+        return cat1, cat2
+
+    def writeData(self, category1_data_in_list, category2_data_in_list):
+        if len(category1_data_in_list)==0 or len(category2_data_in_list)==0:
+            print("Cannot save data - Do you really confirm that those data aren't empty?")
+            return
         else:
-            print("Cannot load data - Did you really open file before?")
+            if DEBUG: print(category1_data_in_list, category2_data_in_list)
+            self.openFile(self.MODE_WRITE)
+            for row in range(0, len(category1_data_in_list) if len(category1_data_in_list) >= len(category2_data_in_list) else len(category2_data_in_list), 1):
+                if DEBUG: print(row)
+                self.file.write((str(category1_data_in_list[row]) if row < len(category1_data_in_list) else '') + ',' + (str(category2_data_in_list[row]) if row < len(category2_data_in_list) else '' )+ '\n')
+                pass
+            self.closeFile()
             pass
         pass
-        
+    
     def __init__(self, filename):
         self.setFileName(filename)
         pass
