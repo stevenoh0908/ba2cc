@@ -93,19 +93,87 @@ Those parameters must be a list type otherwise it would occur fatal error.
 ```python
 cat1 = [1,2,3,4]
 cat2 = [4,5,6,7,8]
-manager = ba2cnc.BAManager(cat1, cat2)
+manager = ba2cc.BAManager(cat1, cat2)
 ```
 
 #### Methods
-
 ##### For Setting In-Variables
+
 ###### FUNCTION getData()
+returns setted data of two categories with list, recommended to use **Unpacking** like following example code.
+
+**Example**
+```python
+manager = ba2cc.BAManager([1,2,3], [4,5,6,7])
+cat1, cat2 = manager.getData()
+# cat1 is now [1,2,3], cat2 is now [4,5,6,7]
+```
+
 ###### FUNCTION setStep(step)
+sets finding step for calculating border for all algorithms. parameter ```step``` must be a positive number, no matter it is an int or float. If you don't set step, Module will use default step, which is 0.1.
+
+**Example**
+```python
+manager = ba2cc.BAManager([1,2,3], [4,5,6,7])
+manager.setStep(0.001)
+# manager's step is now 0.001
+```
+
 ###### FUNCTION getStep()
+returns step for calculating border for all algorithms in float.
+
+**Example**
+```python
+manager = ba2cc.BAManager([1,2,3], [4,5,6,7])
+step = manager.getStep()
+# step is now 0.1, which is default step of BAManager Object
+```
+
 ###### FUNCTION setCategoryData(category_number, data_in_list)
+sets selected category data. requires two parameters: ```category_number```, ```data_in_list```.
+parameter ```category_number``` must be 1 or 2, which means which category you'll gonna change data with following parameter, ```data_in_list```. parameter ```data_in_list``` must be a list object.
+
+**Example**
+```python
+manager = ba2cc.BAManager([1,2,3], [4,5,6,7])
+manager.setCategoryData(1, [1,2])
+manager.setCategoryData(2, [3,4])
+cat1, cat2 = manager.getData()
+# cat1 is now [1,2], cat2 is now [3,4]
+```
+
 ###### FUNCTION getCategoryData(category_number)
+returns selected category's data. requires one parameter: ```category_number``` which must be 1 or 2.
+
+**Example**
+```python
+manager = ba2cc.BAManager([1,2,3], [4,5,6,7])
+cat1 = manager.getCategoryData(1)
+cat2 = manager.getCategoryData(2)
+# cat1 is now [1,2,3], cat2 is now [4,5,6,7]
+```
+
 ###### FUNCTION setCategoryName(category_number, name)
+sets selected category's name. Category name will be displayed in legends when you display data in charts. requires two parameters: ```category_number```, ```name```. ```category_number``` must be 1 or 2, and ```name``` must be a string object. You need this methods when only you'd like to set your category's name manually. If you don't, the module will use default category name which is 'Category 1', 'Category 2'.
+
+**Example**
+```python
+manager = ba2cc.BAManager([1,2,3], [4,5,6,7])
+manager.setCategoryName(2, 'Data')
+# Now manager's category 2's name is 'Data'
+```
+
 ###### FUNCTION getCategoryName(category_number)
+returns selected category's name in string object. requires one parameter: ```category_number``` which must be 1 or 2.
+
+**Example**
+```python
+manager = ba2cc.BAManager([1,2,3], [4,5,6,7])
+manager.setCategoryName(2, 'Data')
+name1 = manager.getCategoryName(1)
+name2 = manager.getCategoryName(2)
+# name1 is 'Category 1', which is default one, name2 is 'Data', which we setted with setCategoryName(category_number, name)
+```
 
 ##### For Calculating Borders
 ###### FUNCTION calculateSignedBorder()
