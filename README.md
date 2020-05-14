@@ -4,7 +4,10 @@
 **ba2cc** is a python-powered algorithm module for finding border between two sorts of data which distributes in some range developed by Stephen Oh. It's short for '**B**orderline **A**lgorithm for **Two** **C**ategories with **C**ontinuous Data'.
 
 ## License
-This module is under MIT License.
+This module is deployed under MIT License.
+
+## Contact
+For Helping or Trouble-Shooting, Please report them on Issues with Labels. ```question``` tag for Helping, ```Bug``` for reporting bugs.
 
 ## Pre-setup
 This module requires numpy and matplotlib for operation, please make sure that you've
@@ -55,8 +58,8 @@ CLASS BAManager
 |_ FUNCTION calculateEntropyBorder()
 |_ FUNCTION calculateSignedMeanBorder()
 |_ FUNCTION calculateUnsignedMeanBorder()
-|_ FUNCTION displayDataInChart()
-|_ FUNCTION displayBorderInChart()
+|_ FUNCTION displayDataInChart(display_mode)
+|_ FUNCTION displayBorderInChart(display_mode)
 |_ FUNCTION setCategoryDataMin(category_number)
 |_ FUNCTION getCategoryDataMin(category_number)
 |_ FUNCTION setCategoryDataMax(category_number)
@@ -71,7 +74,14 @@ CLASS BAManager
 
 #### Const Variables
 ##### CONST OPTION_UNLAYERED
+Const Variable OPTION_UNLAYERED is used for setting displaying mode when you uses ```displayDataInChart(display_mode)``` or ```displayBorderInChart(desplay_mode)```. With OPTION_UNLAYERED mode, The Data Distribution Chart will be unlayered, which means data of two categories will be displayed in same y-value like this:
+![OPTION_UNLAYERED Data Distribution Chart Example 1](https://imgbbb.com/images/2020/05/14/option_unlayered_data.png)
+![OPTION_UNLAYERED Data Distribution Chart Example 2](https://imgbbb.com/images/2020/05/14/option_unlayered_border.png)
+
 ##### CONST OPTION_LAYERED
+Const Variable OPTION_LAYERED is used for setting displaying mode when you uses ```displayDataInChart(display_mode)``` or ```displayBorderInChart(desplay_mode)```. With OPTION_LAYERED mode, The Data Distribution Chart will be layered, which means data of two categories will be displayed in different y-value like this:
+![OPTION_LAYERED Data Distribution Chart Example 1](https://imgbbb.com/images/2020/05/14/option_layered_data.png)
+![OPTION_LAYERED Data Distribution Chart Example 2](https://imgbbb.com/images/2020/05/14/option_layered_border.png)
 
 #### Constructor
 ###### CONSTRUCTOR BAManager(category1_data_in_list, category2_data_in_list)
@@ -95,8 +105,8 @@ CLASS BAManager
 ###### FUNCTION calculateUnsignedMeanBorder()
 
 ##### For Displaying Data and Borders In Chart
-###### FUNCTION displayDataInChart()
-###### FUNCTION displayBorderInChart()
+###### FUNCTION displayDataInChart(display_mode)
+###### FUNCTION displayBorderInChart(display_mode)
 
 ##### In-Methods
 ###### FUNCTION setCategoryDataMin(category_number)
