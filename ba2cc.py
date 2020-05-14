@@ -393,6 +393,7 @@ class BAManager:
             plt.plot(plot_cat1, y1, 'r.', label=self.catname1)
             plt.plot(plot_cat2, y2, 'b.', label=self.catname2)
             plt.xlabel('Values')
+            plt.legend(loc='best')
             plt.ylabel('')
 
             plt.title('Data Distribution Chart')
