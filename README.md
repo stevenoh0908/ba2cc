@@ -75,13 +75,13 @@ CLASS BAManager
 #### Const Variables
 ##### CONST OPTION_UNLAYERED
 Const Variable OPTION_UNLAYERED is used for setting displaying mode when you uses ```displayDataInChart(display_mode)``` or ```displayBorderInChart(desplay_mode)```. With OPTION_UNLAYERED mode, The Data Distribution Chart will be unlayered, which means data of two categories will be displayed in same y-value like this:
-![OPTION_UNLAYERED Data Distribution Chart Example 1](https://imgbbb.com/images/2020/05/14/option_unlayered_data.png)
-![OPTION_UNLAYERED Data Distribution Chart Example 2](https://imgbbb.com/images/2020/05/14/option_unlayered_border.png)
+![OPTION_UNLAYERED Data Distribution Chart Example 1](./image/option_unlayered_data.png)
+![OPTION_UNLAYERED Data Distribution Chart Example 2](./image/option_unlayered_border.png)
 
 ##### CONST OPTION_LAYERED
 Const Variable OPTION_LAYERED is used for setting displaying mode when you uses ```displayDataInChart(display_mode)``` or ```displayBorderInChart(desplay_mode)```. With OPTION_LAYERED mode, The Data Distribution Chart will be layered, which means data of two categories will be displayed in different y-value like this:
-![OPTION_LAYERED Data Distribution Chart Example 1](https://imgbbb.com/images/2020/05/14/option_layered_data.png)
-![OPTION_LAYERED Data Distribution Chart Example 2](https://imgbbb.com/images/2020/05/14/option_layered_border.png)
+![OPTION_LAYERED Data Distribution Chart Example 1](./image/option_layered_data.png)
+![OPTION_LAYERED Data Distribution Chart Example 2](./image/option_layered_border.png)
 
 #### Constructor
 
@@ -178,7 +178,7 @@ name2 = manager.getCategoryName(2)
 ##### For Calculating Borders
 ###### FUNCTION calculateSignedBorder()
 saves in in-class-varible and returns calculated Border value in float, by Signed-Border Algorithm. Signed-Border Algorithm is one of the algorithm which tries to find border value by minimizing Signed-Cost of Datas. Signed-Cost is defined with following mathematical expression:
-![math1](https://latex.codecogs.com/png.latex?\inline&space;J&space;=&space;\sum_{k=1}^{n}(x_{k}&space;-&space;b)), where ![math2](https://latex.codecogs.com/png.latex?\inline&space;n) is number of data regardless of categories, ![math3](https://latex.codecogs.com/png.latex?\inline&space;x_{k}) is value of ![math4](https://latex.codecogs.com/png.latex?\inline&space;k)th data, ![math5](https://latex.codecogs.com/png.latex?\inline&space;b) is border value. You don't need a variable to store return value especially when you're planning to just display Border in Chart and no uses for exporting border values, because when you run this method it will save border value to in-class-variable automatically.
+![math](https://latex.codecogs.com/png.latex?\inline&space;J&space;=&space;\sum_{k=1}^{n}(x_{k}&space;-&space;b)), where ![math](https://latex.codecogs.com/png.latex?\inline&space;n) is number of data regardless of categories, ![math](https://latex.codecogs.com/png.latex?\inline&space;x_{k}) is value of ![math](https://latex.codecogs.com/png.latex?\inline&space;k)th data, ![math](https://latex.codecogs.com/png.latex?\inline&space;b) is border value. Singed-Border Algorithm is suitable with data with operlapping parts, with considering number of each categories. You don't need a variable to store return value especially when you're planning to just display Border in Chart and no uses for exporting border values, because when you run this method it will save border value to in-class-variable automatically.
 
 **Example**
 ```python
@@ -186,8 +186,34 @@ manager = ba2cc.BAManager[1,2,3], [4,5,6,7]
 border = manager.calculateSignedBorder()
 # border is now 4.000000000000003 which calculated by Signed-Border Algorithm. Also, manager's in-class variable is now 4.000000000000003 too.
 ```
+look how it worked!
+![Signed Border Algorithm Result](./image/Signed Border.png)
+
 ###### FUNCTION calculateUnsignedBorder()
+saves in in-class-varible and returns calculated Border value in float, by Unsigned-Border Algorithm. Unsigned-Border Algorithm is one of the algorithm which tries to find border value by minimizing Unsigned-Cost of Datas. Unsigned-Cost is defined with following mathematical expression:
+![math](https://latex.codecogs.com/png.latex?\inline&space;J&space;=&space;\sum_{k=1}^n&space;(x_{k}&space;-&space;b)^2), where ![math](https://latex.codecogs.com/png.latex?\inline&space;n) is number of data regardless of categories, ![math](https://latex.codecogs.com/png.latex?\inline&space;x_{k}) is value of ![math4](https://latex.codecogs.com/png.latex?\inline&space;k)th data, ![math](https://latex.codecogs.com/png.latex?\inline&space;b) is border value. Unsinged-Border Algorithm is suitable with data with operlapping parts, with considering number of each categories. You don't need a variable to store return value especially when you're planning to just display Border in Chart and no uses for exporting border values, because when you run this method it will save border value to in-class-variable automatically.
+
+**Example**
+```python
+manager = ba2cc.BAManager[1,2,3], [4,5,6,7]
+border = manager.calculateUnsignedBorder()
+# border is now 4.000000000000003 which calculated by Unsigned-Border Algorithm. Also, manager's in-class variable is now 4.000000000000003 too.
+```
+look how it worked!
+![Unsigned Border Algorithm Result](./image/Unsigned Border.png)
+
 ###### FUNCTION calculateEntropyBorder()
+saves in in-class-varible and returns calculated Border value in float, by Entropy-Border Algorithm. Entropy-Border Algorithm is one of the algorithm which tries to find border value by minimizing total entropy of data area. entropy is little-bit complex concept to understanding, so for more information of entropy(in IT), please google it. Entropy-Border Algorithm is suitable with any data without operlapping part. It is most effective one with all data on average situation. You don't need a variable to store return value especially when you're planning to just display Border in Chart and no uses for exporting border values, because when you run this method it will save border value to in-class-variable automatically.
+
+**Example**
+```python
+manager = ba2cc.BAManager[1,2,3], [4,5,6,7]
+border = manager.calculateEntropyBorder()
+# border is now 3.450000000000002 which calculated by Entropy-Border Algorithm. Also, manager's in-class variable is now 3.450000000000002 too.
+```
+look how it worked!
+![Entropy Border Algorithm Result](./image/Entropy Border.png)
+
 ###### FUNCTION calculateSignedMeanBorder()
 ###### FUNCTION calculateUnsignedMeanBorder()
 
