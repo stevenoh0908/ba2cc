@@ -1,12 +1,12 @@
 '''
 {Boderline Algorithm for Two Categories}
 
-Date: 2020-05-12 Tue, KST
+Date: 2020-05-12 Thur, KST
 Developed by Stephen Oh, Chief Developer of Trendous Development Alliance & Studio.Chem
 Email Address: stevenoh0908@gmail.com
 
 > Warning
-This Code uses numpy and matplotlib for excution, please make sure that you've installed them to your python's default directory via pip.
+This Code uses numpy and matplotlib for execution, please make sure that you've installed them to your python's default directory via pip.
 '''
 import numpy as np
 from matplotlib import pyplot as plt
