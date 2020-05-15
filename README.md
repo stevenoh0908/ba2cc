@@ -558,7 +558,7 @@ or
 4,
 ```
 
-
+If something wrong with loading data, this method will return (None, None) Tuple object.
 
 ###### FUNCTION writeData(category1_data_in_list, category2_data_in_list)
 
