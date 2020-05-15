@@ -223,6 +223,7 @@ Look how it worked!
 Saves in in-class-variable and returns calculated Border value in float, by Signed-Mean-Border Algorithm. Signed-Mean-Border Algorithm is one of the algorithms which tries to find border value by minimizing the Average of Signed-Cost of Data. Singed-Mean-Border Algorithm is suitable with data with overlapping parts, without considering the number of each category. You don't need a variable to store return value especially when you're planning to just display Border in Chart and no uses for exporting border values because when you run this method it will save border value to in-class-variable automatically.
 
 **Example**
+
 ```python
 manager = ba2cc.BAManager([1,2,3], [4,5,6,7])
 border = manager.calculateSignedMeanBorder()
@@ -539,9 +540,29 @@ If ```data.csv``` looks like this:
 ```
 then cat1, cat2 will be ```python [1,2,3]```, ```python [2,3]``` each. Do not forget ```loadFile()``` method reads CSV file vertically.
 
+Also, remember that your target CSV file does NOT have any in-middle BLANK area like following example. Otherwise, there would be a fatal error.
+
+```
+1,2
+2,    <- This Blank can be a problem.
+3,4
+4,
+```
+
+or 
+
+```
+1,2
+,     <- These two blanks can be some problems.
+3,4
+4,
+```
+
+
+
 ###### FUNCTION writeData(category1_data_in_list, category2_data_in_list)
 
-Writes given data as CSV file. Requires two parameters: ```category1_data_in_list``` and ```category2_data_in_list```. Parameter ```category1_data_in_list``` is a list of data that you'll put in the first category, and parameter ```category2_data_in_list``` is a list of data that you'll put in the second category. Those parameters must be a list object. Otherwise, there would be a fatal error. This method also automatically opens and closes the file, so don't open or close your file manually when you use this method.
+Writes given data as CSV file. Requires two parameters: ```category1_data_in_list``` and ```category2_data_in_list```. Parameter ```category1_data_in_list``` is a list of data that you'll put in the first category, and parameter ```category2_data_in_list``` is a list of data that you'll put in the second category. Those parameters must be a list object with float or int values. Otherwise, there would be a fatal error. This method also automatically opens and closes the file, so don't open or close your file manually when you use this method.
 
 **Example**
 
@@ -599,5 +620,3 @@ fileManager.openFile()
 fileManager.reloadFile()
 fileManager.closeFile()
 ```
-
-###### 
