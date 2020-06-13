@@ -35,7 +35,7 @@ class BAManager:
     border = None
 
     def getData(self):
-        return cat1, cat2
+        return self.cat1, self.cat2
 
     def setStep(self, step):
         if step > 0:
@@ -473,7 +473,7 @@ class ExtremeManager:
                 pass
             pass
         if not len(left_dist_list) == 0:
-            return abs(max(left_dist_list))
+            return abs(min(left_dist_list))
         else:
             return None
         pass
